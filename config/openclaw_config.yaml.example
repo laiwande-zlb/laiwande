@@ -1,0 +1,35 @@
+# ==============================================
+# OpenClaw 配置文件模板
+# 文件名：openclaw_config.yaml.example
+# 使用方法：复制本文件，重命名为 openclaw_config.yaml 填写本地真实路径即可
+# 适配：树莓派5 + Hailo AI HAT + DeepSeek-7B
+# 所有英文参数附带中文翻译说明
+# ==============================================
+
+# 大模型基础配置
+model:
+  # 模型本地存放路径（你本地models文件夹路径，部署后填写真实绝对路径）
+  path: "../models/deepseek-7b"
+  # 模型类型：GGUF量化格式
+  type: "gguf"
+  # 对话最大生成长度
+  max_tokens: 2048
+
+# 硬件加速配置
+hardware:
+  # 开启Hailo硬件加速开关：true=开启，false=关闭CPU运行
+  enable_hailo: true
+  # Hailo加速卡设备编号，树莓派单卡默认0
+  hailo_device_id: 0
+
+# 服务网络配置
+server:
+  # 本地网页访问端口
+  port: 3000
+  # 允许局域网所有设备访问
+  host: "0.0.0.0"
+
+# 插件加载配置
+plugins:
+  # 自动加载Hailo加速插件
+  - "@openclaw/plugin-hailo"
